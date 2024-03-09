@@ -8,6 +8,11 @@
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
   </system-properties>
 
+<!--  Define que regras são enviadas para os browsers relativamente aos tempos-->
+<!--  de cache para tipos de ficheiros imutáveis. Mais tempo evita pedidos (e-->
+<!--  tráfego para o servidor), mas pode levar a que clientes vejam versões antigas-->
+<!--  desses ficheiros.-->
+
   <static-files>
     <include path="/**.html" expiration="1m" /> <!-- 1 minute, normal is 12h or more -->
     <include path="/**.css" expiration="1m" />  <!-- 1 minute, normal is 12h or more -->

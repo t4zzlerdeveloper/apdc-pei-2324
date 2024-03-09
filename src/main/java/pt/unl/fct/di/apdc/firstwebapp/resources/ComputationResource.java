@@ -5,13 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 @Path("/utils")
@@ -39,5 +38,21 @@ public class ComputationResource {
 
 		LOG.fine("Replying to date request.");
 		return Response.ok().entity(g.toJson(fmt.format(new Date()))).build();
+	}
+
+
+	//@PathParam para parametros do tipo /{id}
+	@GET
+	@Path("/calc")
+	public Response computeResult(@QueryParam("num1") int num1,@QueryParam("num2") int num2){
+
+		int result = num1 + num2;
+		String jsonString = "{" +
+				"\"num1\":"+String.valueOf(num1) +
+				",\"num2\":"+String.valueOf(num2) +
+				",\"result\":"+String.valueOf(result) +
+				"}";
+
+		return Response.ok().entity(jsonString).build();
 	}
 }
