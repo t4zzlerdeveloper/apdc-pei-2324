@@ -1,5 +1,6 @@
 package pt.unl.fct.di.apdc.firstwebapp.resources;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,9 +28,11 @@ public class ComputationResource {
 	@GET
 	@Path("/hello")
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response hello() {
-		LOG.fine("Saying hello!!");
-		return Response.ok().entity("Hello apdc-pei-2324 class! I hope you are having a fine day.").build();
+	public Response hello() throws IOException {
+		//test 500 error
+		throw new IOException("UPS");
+//		LOG.fine("Saying hello!!");
+//		return Response.ok().entity("Hello apdc-pei-2324 class! I hope you are having a fine day.").build();
 	}
 	
 	@GET
